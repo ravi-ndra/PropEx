@@ -8,3 +8,6 @@ Where you can...
 * You can purchase any property as a buyer.
 
 * You can join us as admin to keep track on buy and sell.
+
+
+- 📫 PropEx web app ScreenShot: [PropEx](https://drive.google.com/drive/folders/1JpbSOWirXaKtZ2ZCT_ymJTlRUP0Y_A-g?usp=sharing)
