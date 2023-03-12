@@ -1,0 +1,46 @@
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand fs-1" href="/"><strong>Prop<span class="color-b">Ex</span></strong></a>
+
+      <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
+        <ul class="navbar-nav">
+
+          <% if current_user.seller? %>
+            <li class="nav-item">
+              <%= link_to "Add Property", new_property_path, class: "nav-link fs-5" %>
+            </li>
+          <% end %>
+
+          <li class="nav-item">
+            <%= link_to "All Properties", properties_path, class: "nav-link fs-5" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "About", public_about_path, class: "nav-link fs-5" %>
+          </li>
+
+          <li class="nev nav-item dropdown">
+            <span class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= link_to image_tag("#{current_user.role}.png"), alt: "user role image" %>
+            </span>
+            <div class="dropdown-menu">
+              <% if current_user.admin? %>
+                <%= link_to "Dashboard", admin_root_path, class: "dropdown-item" %>
+              <% else %>
+                <%= link_to "Dashboard", dashboard_index_path, class: "dropdown-item" %>
+              <% end %>
+              <%= link_to "Edit Profile",edit_user_registration_path, method: :get, class: "dropdown-item" %>
+              <%= button_to "Sign out",destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav><!-- End Header/Navbar -->

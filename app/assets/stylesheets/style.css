@@ -1,0 +1,334 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #384047;
+  position: relative;
+  margin: 0;
+}
+
+.frm form {
+  border-radius: 10px;
+  border-top: 2px solid #2eca6a;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.123);
+  background-color: #ffffff;
+  padding: 0;
+  max-width: 600px;
+  margin: auto;
+}
+
+.frm input,
+select,
+input[type="file"] {
+  font-size: .8rem;
+  border-radius: 0.8rem;
+  padding: .5rem 1rem;
+  width: 70%;
+  outline-color: #a8ebb8;
+  border: 1px solid gray;
+}
+
+input[type="submit"] {
+  border: 1px solid;
+}
+
+
+/* .frm form {
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #e2e2e2;
+  border-radius: 8px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+input[type="file"],
+textarea,
+select {
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  border-radius: 5px;
+  width: 100%;
+  background-color: #f6fdf9;
+  color: #8aa08d;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 30px;
+} */
+
+.navv img {
+  height: 80px;
+}
+
+.role img {
+  height: 40px;
+  float: right;
+  margin-right: 50px;
+}
+
+.navbar-nav a {
+  color: black;
+  text-decoration: none;
+}
+
+.navbar-nav a:hover {
+  text-shadow: 2px 2px 5px #5dd95d;
+  color: black;
+}
+
+.dropdown-menu .dropdown-menu-left {
+  left: 0;
+  right: auto;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container:nth-of-type(even) {
+  flex-direction: column-reverse;
+}
+
+.details {
+  padding-left: 20px;
+}
+
+#myCarousel .carousel-inner img {
+  width: 100vw;
+  height: 70vh;
+  overflow: hidden;
+}
+
+
+/* Pagination */
+
+.pagination {
+  text-align: center;
+  font-size: larger;
+}
+
+.page {
+  background: white;
+  cursor: default;
+  display: inline-block;
+}
+
+.page a,
+.page span,
+.page em {
+  padding: 0.2em 0.5em;
+  display: block;
+  float: left;
+  margin-right: 1px;
+}
+
+.page .disabled {
+  color: #999999;
+  border: 1px solid #dddddd;
+}
+
+.page .current {
+  font-style: normal;
+  font-weight: bold;
+  background: #2eca6a;
+  color: white;
+  border: 1px solid #27b45d;
+}
+
+.page a {
+  text-decoration: none;
+  color: #2bd16b;
+  border: 1px solid #9ae5a0;
+}
+
+.page a:hover,
+.page a:focus {
+  color: #028313;
+  border-color: #008b15;
+}
+
+
+/* Create two unequal columns that floats next to each other */
+
+
+/* Left column */
+
+.leftcolumn {
+  float: left;
+  width: 75%;
+}
+
+
+/* Right column */
+
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+}
+
+
+/* Add a card effect for articles */
+
+.cards {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+
+/* Clear floats after the columns */
+
+.rows:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 800px) {
+  .leftcolumn,
+  .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.frm .field label {
+  font-size: larger;
+}
+
+.frm .actions,
+input[type="submit"] {
+  font-size: larger;
+  width: 50%;
+  margin: auto;
+}
+
+.frm div label {
+  display: block;
+  font-size: larger;
+}
+
+.dashboard h1,
+.sold {
+  margin-top: 130px;
+  text-align: center;
+}
+
+.dashboard .row {
+  justify-content: center;
+}
+
+.dashboard .row .detail_box {
+  margin-top: -30px;
+  text-align: end;
+  font-size: xxx-large;
+}
+
+.container .property-grid {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.input-group .search {
+  border: solid 1px #5dd95d;
+}
+
+.input-group {
+  margin-top: -100px;
+}
+
+.search_box {
+  margin-top: 170px;
+}
+
+.not_found h1 {
+  color: black;
+}
+
+.not-found em {
+  color: #2eca6a;
+}
+
+.nev span {
+  margin-top: -20px;
+}
+
+.container1 {
+  height: 900px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.container2 {
+  margin-top: 150px;
+}
+
+.intro-single .container {
+  margin-top: -170px;
+  width: 100%;
+}
+
+.show {
+  margin-bottom: -100px;
+}
+
+.intro-single .container .row {
+  width: 100%;
+}
+
+.section-about .about-img-box {
+  margin-left: 50px;
+}
+
+
+
+.password {
+  margin-top: 150px;
+  text-align: center;
+}
+
+.my_image_size {
+  width: 50px;
+  height: 50px;
+}
+
+.container2 .carousel-inner {
+  height: 650px;
+}
+
+#unsold {
+  color: green;
+}
+
+#sold {
+  color: red;
+}
+
+.property-card {
+  float: left;
+}
+
+.property-card .card-box-a {
+  border-radius: 25px 10px;
+  width: 95%;
+  height: 500px !important;
+  
+.error_code {
+  color: red;
+}

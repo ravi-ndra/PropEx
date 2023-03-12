@@ -1,0 +1,164 @@
+<section class="intro-single show">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single"><%= @property.name %></h1>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <%= link_to "All Properties", properties_path %>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              <%= @property.name %>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# Slider %>
+<div class="container1">
+  <div id="carouselExampleFade" class="carousel slide carousel-fade mx-auto" data-bs-ride="carousel" data-bs-interval="5000">
+      <div class="carousel-inner">
+      <% @property.images.each do |img| %>
+        <div class="carousel-item active">
+          <%= link_to image_tag(img, height: "100%", width: "100%"), alt: "property_image" %>
+        </div>
+      <%end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+  </div>
+</div>
+
+<div class="text-center text-capitalize mt-2 fs-1 text-dark "><%= @property.name %></div>
+
+<%# Details %>
+<div class="container">
+  <div class="rows">
+    <div class="leftcolumn">
+      <div class="cards">
+        <div class="row justify-content-between">
+          <div class="col-md-5 col-lg-4">
+            <div class="property-price d-flex justify-content-center foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="bi bi-cash">₹</span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <% if current_user.present? %>
+                    <h5 class="title-c"><%= number_to_currency(@property.price, :unit=>'') %></h5>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="property-summary">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="title-box-d section-t4">
+                    <h3 class="title-d">Quick Summary</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="summary-list">
+                <ul class="list">
+                  <li class="d-flex justify-content-between">
+                    <strong>Location:</strong>
+                    <span><%= @property.address %><br/><%= @property.city %></span>
+                  </li>
+                  <li class="d-flex justify-content-between">
+                    <strong>Status:</strong>
+                    <span>
+                      <% if @property.is_paid == false %>
+                        <span id="unsold">UNSOLD</span>
+                      <% else %>
+                        <span id="sold">SOLD</span>
+                      <% end %>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <%# Buttons %>
+              <div class="text-center ">
+                <div class="btn-group d-flex justify-content-center">
+                  <% if current_user.present? %>
+                    <% if current_user.id == @property.user_id %>
+                      <% if @property.is_paid == false %>
+                      <%= button_to edit_property_path(@property), class: "btn btn-outline-secondary", method: :get do%> 
+                        <span title="Edit"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg"><path d="M880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32zm-622.3-84c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 0 0 0-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 0 0 9.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9z"></path></svg></span>
+                      <% end %>
+                        <%= button_to @property, class: "btn btn-outline-danger", method: :delete do %>
+                          <span title="Delete"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M4 8h16v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8zm2 2v10h12V10H6zm3 2h2v6H9v-6zm4 0h2v6h-2v-6zM7 5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2h5v2H2V5h5zm2-1v1h6V4H9z"></path></g></svg></span>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                    <% if current_user.buyer? && @property.is_paid == false %>
+                      <%= button_to "Buy Now", checkouts_create_path, class:"btn btn-outline-success mt-1", data: { turbo: false }, params: {id: @property.id}, remote: true, method: :post %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7 col-lg-7 section-md-t3">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="title-box-d">
+                  <h3 class="title-d">Property Description</h3>
+                </div>
+              </div>
+            </div>
+            <div class="property-description">
+              <p class="description color-text-a">
+              <p><%= @property.description %></p>
+            </div>
+          </div>
+        </div>      
+      </div>
+    </div>
+    <div class="rightcolumn">
+      <div class="cards">
+        <div class="title-box-d">
+          <h3 class="title-d">Contact Owner</h3>
+        </div>
+        <div class="property-agent">
+            <h4 class="title-agent"><%= @property.user.name %></h4>
+          <p class="color-text-a">
+            Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
+            dui. Quisque velit nisi,
+            pretium ut lacinia in, elementum id enim.
+          </p>
+          <% if current_user.present? %>
+            <ul class="list-unstyled">
+              <li class="d-flex justify-content-between">
+                <strong>Phone:</strong>
+                <span class="color-text-a">(222) 4568932</span>
+              </li>
+              <li class="d-flex justify-content-between">
+                <strong>Email:</strong>
+                <span class="color-text-a">
+                  <%= mail_to @property.user.email, @property.user.email, target: '_blank' %>
+                </span>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= Footer ======= -->
+<%= render 'layouts/section_footer' %>

@@ -1,0 +1,25 @@
+<div class="search_box input-group rounded justify-content-center">
+  <%= form_tag(search_path, :method => "get") do %>
+    <span><%= text_field_tag :search, params[:search], class: "search form-control rounded", border_radius: "50px",placeholder: "Search..." %></span>
+  <% end %>
+</div>
+<h1 class="text-center">Properties</h1><br/>
+<% if @results.any? %>
+  <section class="property-grid grid">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 d-flex">
+            <% @results.each do |property| %>
+              <%= link_to property, class: "link-a" do  %>
+                <%= render property%>
+              <% end %>
+            <% end %>
+          </div>
+      </div>
+  </section>
+<% else %>
+  <%= render "not_found"%>
+<% end %>
+
+  <!-- ======= Footer ======= -->
+<%= render 'layouts/section_footer' %>

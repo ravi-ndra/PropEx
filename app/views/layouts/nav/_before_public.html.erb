@@ -1,0 +1,107 @@
+<!-- ======= Header/Navbar ======= -->
+<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand text-brand fs-1" href="/"><strong>Prop<span class="color-b">Ex</span></strong></a>
+    <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
+      <ul class="navbar-nav ">
+        <li class="nav-item">
+          <%= link_to "All Properties", properties_path, class: "btn btn-default mb-4 nav-link fs-5" %>
+        </li>
+        <li class="nav-item">
+          <a href="" class="btn btn-default mb-4 nav-link fs-5" data-bs-toggle="modal" data-bs-target="#modalLoginForm">Login</a>
+        </li>
+        <li class="nav-item">
+          <a href="" class="btn btn-default mb-4 nav-link fs-5" data-bs-toggle="modal" data-bs-target="#modalSignupForm">SignUp</a>
+        </li>
+        <li class="nav-item">
+          <%= link_to "About", public_about_path, class: "btn btn-default mb-4 nav-link fs-5" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav><!-- End Header/Navbar -->
+
+<%# Sign In form %>
+
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+        <button type="button" class="close btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+        <div class="text-center" class="frm">
+          <%= form_for(:user, :url => session_path(:user)) do |f| %>
+            <div class="form-group">
+              <%= f.label :email %><br/>
+              <%= f.text_field :email %>
+            </div><br/>
+            <div class="form-group">
+              <%= f.label :password %><br/>
+              <%= f.password_field :password %><br/>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+            <div class="actions ">
+              <%= f.submit 'Sign in', class: 'btn btn-outline-success mb-4' %>
+            </div>
+          <% end %>
+        <%= render "devise/shared/links" %><br/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# Sign Up form %>
+<div class="modal fade" id="modalSignupForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+        <button type="button" class="close btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="text-center" class="frm">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="field">
+            <%= f.label :name %><br />
+            <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autocomplete: "email" %>
+          </div><br/>
+
+          <div class="field">
+            <%= f.select :role, collection: User.roles.keys.to_a %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div><br/>
+
+          <div class="actions">
+            <%= f.submit "Sign up", class: 'btn btn-outline-success mb-4' %>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %><br/>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

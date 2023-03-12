@@ -1,0 +1,10 @@
+<div class="text-center"><h1>New property</h1>
+  <%= render "form", property: @property %><br>
+  <div>
+    <%= link_to properties_path do %>
+      <span title="Back" ><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path d="M21 11L6.414 11 11.707 5.707 10.293 4.293 2.586 12 10.293 19.707 11.707 18.293 6.414 13 21 13z"></path></svg></span>
+    <% end %>
+  </div>
+</div>
+<%# ---- Footer ---- %>
+<%= render 'layouts/section_footer' %>

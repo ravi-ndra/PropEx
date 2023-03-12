@@ -1,0 +1,46 @@
+<div class="frm">
+  <%= form_with(model: property) do |form| %>
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+      <p class="error_code" ><%= show_errors(@property, :name) %></p>
+    </div>
+
+    <div>
+      <%= form.label :description %>
+      <%= form.text_field :description %>
+    </div>
+
+    <div>
+      <%= form.label :address %>
+      <%= form.text_field :address %>
+      <p class="error_code"  ><%= show_errors(@property, :address) %></p>
+    </div>
+
+    <div>
+      <%= form.label :city %>
+      <%= form.text_field :city %>
+      <p class="error_code"  ><%= show_errors(@property, :city) %></p>
+    </div>
+
+    <div>
+      <%= form.label :price %>
+      <%= form.number_field :price %>
+      <p class="error_code"  ><%= show_errors(@property, :price) %></p>
+    </div>
+    
+    <div>
+    <% p current_user.id %>
+      <%= form.hidden_field :user_id, :value => current_user.id %>
+    </div>
+
+    <div>
+      <%= form.label :Images %><br>
+      <%= form.file_field :images, multiple: true %><br><br>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Submit", class: "btn btn-outline-success text-center" %><br/><br/>
+    </div>
+  <% end %>
+</div>

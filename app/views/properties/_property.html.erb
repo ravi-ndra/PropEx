@@ -1,0 +1,32 @@
+<div class="property-card col-md justify-content">
+  <div class="card-box-a card-shadow">
+    <div class="img-box-a overflow-hidden">
+      <%= image_tag(image_attached(property), :height=> 500,:width=>600, :crop=>"crop") %>
+    </div>
+    <div class="card-overlay">
+      <div class="card-overlay-a-content">
+        <div class="card-header-a">
+          <h2 class="card-title-a">
+            <%= property.name %>
+          </h2>
+        </div>
+        <div class="card-body-a">
+          <% if current_user.present? %>
+            <div class="price-box d-flex">
+              <span class="price-a"><%= number_to_currency(property.price, :unit=>'₹') %></span>
+            </div>
+          <% end %>
+        </div>
+        <div class="card-footer-a" >
+          <ul class="card-info d-flex justify-content-center">
+            <li>
+              <h4 class="card-info-title text-center">City</h4>
+              <span><%= property.city %>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
